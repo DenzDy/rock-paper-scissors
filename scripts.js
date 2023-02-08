@@ -4,21 +4,21 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    var loweredSelection = playerSelection.tolowerCase();
+    var loweredSelection = playerSelection.toLowerCase();
     if(loweredSelection != computerSelection){
         if(computerSelection == "rock" && loweredSelection == "scissors"){
-            console.log(`You lose! ${computerSelection} beats ${loweredSelection}!\n`);
+            console.log(`You lose! Computer:${computerSelection} beats You:${loweredSelection}!\n`);
             return 1;       
         }
         else if(computerSelection == "paper" && loweredSelection == "rock"){
-            console.log(`You lose! ${computerSelection} beats ${loweredSelection}!\n`);
+            console.log(`You lose! Computer:${computerSelection} beats You:${loweredSelection}!\n`);
             return 1;       
         }
         else if(computerSelection == "scissors" && loweredSelection == "paper"){
-            console.log(`You lose! ${computerSelection} beats ${loweredSelection}!\n`);
+            console.log(`You lose! Computer:${computerSelection} beats You:${loweredSelection}!\n`);
             return 1;       
         }
-        console.log(`You win! ${loweredSelection} beats ${computerSelection}!\n`);
+        console.log(`You win! You:${loweredSelection} beats Computer:${computerSelection}!\n`);
         return 2;
         
     }
@@ -31,11 +31,12 @@ function playGame(){
     while(points[0] < 5 || points[1] < 5){
         var input = prompt("Enter rock, paper, or scissors: ");
         var computerChoice = getComputerChoice();
-        if(playRound(input, computerChoice) == 1){
-            ++points[1];
+        var roundResult = playRound(input, computerChoice);
+        if(roundResult == 1){
+            points[1]++;
         }
-        else if(playRound(input, computerChoice) == 2){
-            ++points[0];
+        else if(roundResult == 2){
+            points[0]++;
         }
         console.log(`Current scores: \n You: ${points[0]}    -------    Computer: ${points[1]}\n`);
     }
