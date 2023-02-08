@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection){
 
 function playGame(){
     var points = [0, 0];
-    while(points[0] < 5 || points[1] < 5){
+    while(points[0] < 5 && points[1] < 5){
         var input = prompt("Enter rock, paper, or scissors: ");
         var computerChoice = getComputerChoice();
         var roundResult = playRound(input, computerChoice);
